@@ -13,6 +13,8 @@
 		Having a frame rate higher than a refresh rate is ideal, since your GPU is refreshing faster than your screen is reading, In this scenario, after a successful screen refresh,your GPU will be VSYNCed waiting for the next screen refresh to occur.
 	- frame rate < refresh rate:seeing a smooth animation broke up with sudden pauses,follwoed by the rest of the smooth animation.Always described as jank or hitching or lag or stutter.
 
+#### [RxAndroid new async api][rxandroid_new_async_api]
 
 
 [vsync]:https://www.youtube.com/watch?v=1iaHxmfZGGc
+[rxandroid_new_async_api]:https://medium.com/@sweers/rxandroids-new-async-api-4ab5b3ad3e93
