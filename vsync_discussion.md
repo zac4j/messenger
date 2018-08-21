@@ -13,8 +13,37 @@
 		Having a frame rate higher than a refresh rate is ideal, since your GPU is refreshing faster than your screen is reading, In this scenario, after a successful screen refresh,your GPU will be VSYNCed waiting for the next screen refresh to occur.
 	- frame rate < refresh rate:seeing a smooth animation broke up with sudden pauses,follwoed by the rest of the smooth animation.Always described as jank or hitching or lag or stutter.
 
-#### [RxAndroid new async api][rxandroid_new_async_api]
+#### [Rehash:Use async Messaging][rehash]
 
+> Changing the default main thread Handler to use asynchronous messaging.
+This allow us to avoid VSYNC locking that otherwise pushes every post to the next frame.
+
+This works by relying on the new `Handler.createAsync` factory in Android API 28, and on pre-28 reply on asynchronous `Messages` to avoid vsync locking while keeping the safety of the main thread looper.
+
+```java
+public static Scheduler from(Looper looper, boolean async) {
+	if (looper == null) {
+		throw new NullPointerException("looper == null");
+	}
+	if (Build.VERSION.SDK_INIT < 16) {
+		async = false;
+	} else if (async && Build.VERSION.SDK_INIT < 22) {
+		// Confirm that the method is available on this API level despite being @hide.
+		Message message = Message.obtain();
+		try {
+			message.setAsynchronous(true);
+		} catch(NoSunchMethodError e) {
+			async = false;
+		}
+		message.recycle();
+	}
+	return new HandlerScheduler(new Handler(looper), async);
+}
+
+private AndroidSchedulers() {
+	throw new AssertionError("No instances");
+}
+```
 
 [vsync]:https://www.youtube.com/watch?v=1iaHxmfZGGc
-[rxandroid_new_async_api]:https://medium.com/@sweers/rxandroids-new-async-api-4ab5b3ad3e93
+[rehash]:https://github.com/ReactiveX/RxAndroid/pull/416
