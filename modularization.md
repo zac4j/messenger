@@ -1,6 +1,6 @@
 ## App Modularization Discussion 
 
-1.[Intro to App Modularization][intro_modular]
+#### 1.[Intro to App Modularization][intro_modular]
 ![project_arch][project_arch]
 + There kinds of Module:
 	- app → Empty Application module that only launches features.
