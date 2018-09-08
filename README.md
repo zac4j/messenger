@@ -1,2 +1,2 @@
 # messenger
-Interesting discussion about popular library &amp; framework about Android
+Interesting discussion about software design
