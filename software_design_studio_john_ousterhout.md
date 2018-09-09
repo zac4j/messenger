@@ -113,19 +113,19 @@ ObjectInputStream objectStream = new ObjectInputStream(bufferedStream);
 	- Goal: after change, system is the way it would have been if designed that way from the start
 
 #### Is the Course Working?
-**Just the first step towards becoming a great prmgrammer**
-**Good energy in class:**
++ **Just the first step towards becoming a great prmgrammer**
++ **Good energy in class:**
 	- Tone of discussions changes halfway through
 	- Students are thinking about their code in new ways
-**Interesting challenges for me:**
++ **Interesting challenges for me:**
 	- What causes complexity?
 	- How to design simple code?
-**Discovering new ideas from reading students' code**
++ **Discovering new ideas from reading students' code**
 	- Specialized -> complicated
 	- General-purpose -> simple, deep
 
 [gtalk]:https://www.youtube.com/watch?v=bmSAYlu0NcY
 [cs190]:https://web.stanford.edu/~ouster/cgi-bin/cs190-winter18/index.php
 [inf_hiding]:https://cs.uwaterloo.ca/~dberry/COURSES/software.engr/lectures.pdf/inf_hiding.pdf
-[csbd]:
-[tvs]:
+[csbd]:http://o6mq6hyfb.bkt.clouddn.com/class_should_be_deep.PNG
+[tvs]:http://o6mq6hyfb.bkt.clouddn.com/tactical_vs_strategic.PNG
