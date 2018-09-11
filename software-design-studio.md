@@ -40,7 +40,7 @@ FileInputStream fileStream = new FileInputStream(filename);
 BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
 ObjectInputStream objectStream = new ObjectInputStream(bufferedStream);
 ```
-+ <font color=red>Length isn't the big issue, it's abstraction.</font>
++ Length isn't the big issue, it's abstraction.
 
 **A Deep Interface**
 + Unix file I/O
