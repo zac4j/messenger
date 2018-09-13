@@ -6,15 +6,13 @@ categories:
 - [architecture, hybrid]
 ---
 
-## Hybrid Architecture
-
-此文源自于 Basecamp 的技术博客 [Basecamp 3 for iOS: Hybrid Architecture][original_article]
+此文译自于 Basecamp 的技术博客 [Basecamp 3 for iOS: Hybrid Architecture][original_article]，这篇文章基于 iOS 版的 Basecamp app 概述了 Hybrid 架构的一些重要组件以及优缺点，后面的一些文章我会对这些常用的组件进行深入的描述和探究。
 
 #### What's Hybrid
-Hybrid 架构的特点是使用 Web 技术渲染页面，跟下面这些是不同的：
+Hybrid 架构的特点是使用 Web 技术渲染 app 的页面，跟下面这些是不同的：
 + 使用框架通过 HTML/CSS 模拟原生的控制 (PhoneGap)
 + 使用框架将别的类型的语言编译成原生的代码 (Xamarin)
-+ 使用框架将一套代码库生成多平台的 app
++ 使用框架将一套代码库生成多平台的 app（ionic）
 
 #### Under the hood
 BaseCamp 使用 [Tuobilinks][turbolinks] 来为 hybrid 架构提供支撑，Tuobilinks 的主要功能有：
@@ -26,9 +24,9 @@ BaseCamp 使用 [Tuobilinks][turbolinks] 来为 hybrid 架构提供支撑，Tuob
 #### Router/Nagivator
 BaseCamp iOS 版大部分页面导航(navigation)基于 URL 驱动，URL 可以来自于：
 + 网页链接：https://zacash.cn
-+ 推送通知:appnotify://
++ 推送通知:zacash://notifymsg?msgId=123
 + Universal Link:https://zacash.cn/t, 安卓见 [App Link][app_link]
-+ 原生动作：scheme://example
++ 原生动作：zacash://jumpage?pageId=456
 + etc.
 
 所有这些动作通过 Router 跳转，Router 的功能是根据提供的 url 指定下一步 action，这些 action 可以包括：
@@ -38,11 +36,9 @@ BaseCamp iOS 版大部分页面导航(navigation)基于 URL 驱动，URL 可以�
 + etc.
 
 #### Bridge
-"Bridge" 是组成 hybrid 架构的一个重要组件，Bridge 是涵盖性术语，主要描述：native -> web (web - native) 之间的交流。BaseCamp 的思路是使用一套 JavsSctipt 文件（使用 TypeScript 编写）嵌入到 app 中，通过 `WKUserScript` 注入到 WebView 中。这种方式提供一套 API 可以让 native 的代码与 webView 交互，而不必通过查询 DOM 或进行复杂的 JS 操作。使用 `WKScriptMessageHandler` 可以响应 webview 通过 bridge 发出的信息。
+Bridge 是组成 hybrid 架构的一个重要组件，Bridge 是涵盖性术语，主要描述：native -> web (web - native) 之间的交流。BaseCamp 的思路是使用一套 JavsSctipt 文件（使用 TypeScript 编写）嵌入到 app 中，通过 `WKUserScript` 注入到 WebView 中。这种方式提供一套 API 可以让 native 的代码与 webView 交互，而不必通过查询 DOM 或进行复杂的 JS 操作。使用 `WKScriptMessageHandler` 可以响应 webview 通过 bridge 发出的信息。
 
-![bridge_example][bridge_example]
-
-图片左边部分是移动浏览器的界面，右边是 app 中的样式。app 通过 bridge 隐藏了顶部导航栏，breadcrumbs，以及其他不希望在 app 中渲染的元素。
+![左边是 mobile browser 界面，右边是 app 中的样式。app 通过 bridge 隐藏了顶部导航栏，breadcrumbs，以及其他不希望在 app 中渲染的元素。][bridge]
 
 #### Basecamp app 的示例
 下面的例子中，紫色的图层表示网页元素，绿色图层表示原生的 UI。
@@ -50,9 +46,7 @@ BaseCamp iOS 版大部分页面导航(navigation)基于 URL 驱动，URL 可以�
 **MainTabs**
 iOS 版的 Basecamp 3 有 4 个主标签页 main Tabs (*Home*, *Hey!*, *Activity*, *Find*).这些 tabs 是 100% 原生实现的，它们是 app 中主要交互的点，我们希望它们尽可能快速，团队同样希望移动端能获取到与桌面端不同的用户体验，例如加入了统一的 *Hey!* 对于所有的通知都包括最近的 *Pings*
 
-![main_tabs][main_tabs]
-
-Basecamp 3 for iOS -- Main tabs
+![Basecamp 3 for iOS -- Main tabs][main_tabs]
 
 **Message**
 当点击 *Hey!*中的某条通知，通常称为 Message，我们在 navigation 栈推入一个新的 `TurbolinksViewController`
@@ -65,16 +59,17 @@ Message 页面通过 *Bridge* 提取需要的数据展示在 navigation bar，ac
 **Campfire**
 Campfire 页面是由 web 和原生混合开发：
 
-![campfire][campfire]
+![从左到右依次为：Hey! -> campfire -> completing a mention -> attaching a file][campfire]
 
-从左到右依次为：Hey! -> campfire -> completing a mention -> attaching a file
-
-Chat 页的主要内容是网页，软键盘和输入框是原生，我们解决了 Web 输入的许多问题，例如在滚动时保持输入框正确的位置，控制软键盘的隐藏等。点击某个人姓名时，我们使用原生的 mention auto-completer 组件。点击回形针按钮时展示原生的 attachment picker 组件。
+Chat 页的主要内容是网页，软键盘和输入框是原生的，我们解决了 Web 输入的许多问题，如：
++ 在滚动时保持输入框在正确的位置，控制软键盘的隐藏等。
++ 点击某个人姓名时，使用原生的 mention auto-completer 组件。
++ 点击回形针按钮时展示原生的 attachment picker 组件。
 
 **总结**
 上面这些只是几个例子，但展示了这种方法的灵活性。这种架构的优点是我们没有被锁定在一个方法或框架中。原生或 web 不是二元选择，而是 Specturm:
 
-![spectrum][spectrum]
+![web -> native spectrum][spectrum]
 
 对于 app 内的任意屏幕，我们可以调整这个 specturm，我们可以将使用不太频繁的原生页面转化为 web 页，对于需要提供最佳用户体验的页面，我们可以用原生的方式实现。我们还可以尝试混合使用 React Native。无论何时 Apple 发布新的 API，我们都可以立即支持它，因为我们不依赖第三方框架去更新。
 
@@ -90,4 +85,4 @@ Chat 页的主要内容是网页，软键盘和输入框是原生，我们解决
 [main_tabs]:http://o6mq6hyfb.bkt.clouddn.com/basecamp_main_tabs.png
 [hey]:http://o6mq6hyfb.bkt.clouddn.com/basecamp_hey.png
 [campfire]:http://o6mq6hyfb.bkt.clouddn.com/basecamp_campfire.png
-[specturm]:http://o6mq6hyfb.bkt.clouddn.com/basecamp_specturm.png
+[spectrum]:http://o6mq6hyfb.bkt.clouddn.com/basecamp_specturm.png
