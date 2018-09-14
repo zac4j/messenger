@@ -1,0 +1,22 @@
+Cordova
++ Native runtime
++ JavaScript Bridge
++ WebView
+
+- PhoneGap
+- Codova
+- HBuilder
+
+---
+title: JSBridge
+---
+
+JSBridge 实现的通用功能
++ 
+
+native 调用 js 的方法
+**iOS**
++ `evaluateJavaScript:completionHandler`
+
+**Android**
++ `evaluateJavascript`
