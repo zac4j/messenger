@@ -1,5 +1,5 @@
 ---
-title:URL Scheme
+title:Launch App from Web
 tags: 
 - hybrid
 categories: 
@@ -46,7 +46,5 @@ intent:
 一些通过 Chrome 无法启动外部 app 可能的原因有：
 + Intent 无法被识别，没有 app 适配当前 intent
 + JavaScript timer 试图不经用户点击 button 直接打开 app
-
-
 
 [intent_extra]:http://developer.android.com/guide/components/intents-filters.html#extras
