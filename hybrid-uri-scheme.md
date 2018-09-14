@@ -35,7 +35,7 @@ URI 的通用语法依次由 5 个组件构成：
 
 **常见的例子**
 ```
- 		     userinfo      host        port
+ 	 userinfo      host        port
           ┌─┴────┐ ┌────┴────────┐ ┌┴┐ 
   https://john.doe@www.example.com:123/forum/questions/?tag=networking&order=newest#top
   └─┬─┘ └───────┬────────────────────┘└─┬─────────────┘└──┬───────────────────────┘ └┬┘  
