@@ -1,9 +1,9 @@
 ---
 title: URI Scheme
-tags:
-  - hybrid
+tags: 
+- hybrid
 categories: 
-  - [hybrid]
+- [hybrid]
 ---
 
 #### [Introduction][wikipedia]
