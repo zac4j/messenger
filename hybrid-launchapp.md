@@ -8,10 +8,9 @@ categories:
 
 Hybrid 架构中常见的几种 Launch App 的方式：
 + Android intents with chrome
-+ Allowing other apps to start your activity
 + Create deep links to app content
 
-#### Android Intent with Chrome
+### Android Intent with Chrome
 在 Chrome for Android ver.18 或更早之前，Android 系统允许网页通过 Android intent 启动 app。一种场景是网页内嵌入 iframe 并且 src 设定自定义的 URI-scheme:
 ```xml
 <iframe scr="zacash://launchapp"></iframe>
@@ -19,7 +18,7 @@ Hybrid 架构中常见的几种 Launch App 的方式：
 
 在 Chrome for Android ver.25 以后，不再允许通过在 iframe 设置 src 属性的方式启动 app 功能。取而代之，你需要定义 `intent:` 句式来启动 app。
 
-**最佳实践**
+#### 最佳实践
 构造 `intent` 句式的最佳实践是将其 anchor 和 embed 到网页中启动 app。我们可以通过 [Intent Extras][intent_extra] 方便地传递 extra 信息。
 基本的语法是：
 ```
@@ -41,7 +40,7 @@ intent:
 + Intent 无法被识别，没有 app 适配当前 intent
 + JavaScript timer 试图不经用户点击 button 直接打开 app
 
-**示例**
+#### 示例
 假设我的 App 的 CaptureActivity 在 manifest 文件中的声明像这样：
 ```xml
 <!-- Support zxing://scan/?... like iPhone app -->
@@ -69,7 +68,7 @@ intent:
 ```
 这样假设 app 未能启动，我们将会跳转到 fallback URL.
 
-**注意事项**
+#### 注意事项
 + 具有 [`android.intent.category.BROWSABLE`][category_browsable] filter 的 Activity 能够使用此方法调用，因为它表明 app 可以安全地从浏览器打开。
 + 以下场景 Chrome 不会启动外部 app：
 	- Intent URI 由输入的 URL 重定向而来。
