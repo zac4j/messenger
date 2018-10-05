@@ -44,23 +44,23 @@ intent:
 假设我的 App 的 CaptureActivity 在 manifest 文件中的声明像这样：
 ```xml
 <!-- Support zxing://scan/?... like iPhone app -->
-	<activity android:name=".CaptureActivity"
-            android:screenOrientation="sensorLandscape"
-            android:clearTaskOnLaunch="true"
-            android:stateNotNeeded="true"
-            android:theme="@style/CaptureTheme"
-            android:windowSoftInputMode="stateAlwaysHidden">
-    <intent-filter>
-      <action android:name="android.intent.action.VIEW"/>
-      <category android:name="android.intent.category.DEFAULT"/>
-      <category android:name="android.intent.category.BROWSABLE"/>
-      <data android:scheme="zxing" android:host="scan" android:path="/"/>
-    </intent-filter>
-  </activity>
+<activity android:name=".CaptureActivity"
+          android:screenOrientation="sensorLandscape"
+          android:clearTaskOnLaunch="true"
+          android:stateNotNeeded="true"
+          android:theme="@style/CaptureTheme"
+          android:windowSoftInputMode="stateAlwaysHidden">
+  <intent-filter>
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+    <data android:scheme="zxing" android:host="scan" android:path="/"/>
+  </intent-filter>
+</activity>
 ```
 为了启动 Zxing 扫码 app ，我们将 anchor 的 href 编码为：
 ```html
-	<a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end"> Take a QR code </a>
+<a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end"> Take a QR code </a>
 ```
 假设有 fallback URL 定义的话：
 ```html
