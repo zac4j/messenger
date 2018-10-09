@@ -1,9 +1,9 @@
 ---
-title:Launch App from Web
-tags: 
-- hybrid
-categories: 
-- [hybrid]
+title: Launch App from Web
+tags:
+	- hybrid
+categories:
+	- [hybrid]
 ---
 
 Hybrid 架构中常见的几种 Launch App 的方式：
@@ -13,7 +13,7 @@ Hybrid 架构中常见的几种 Launch App 的方式：
 ### Android Intent with Chrome
 在 Chrome for Android ver.18 或更早之前，Android 系统允许网页通过 Android intent 启动 app。一种场景是网页内嵌入 iframe 并且 src 设定自定义的 URI-scheme:
 ```xml
-<iframe scr="zacash://launchapp"></iframe>
+<iframe src="zacash://launchapp"></iframe>
 ```
 
 在 Chrome for Android ver.25 以后，不再允许通过在 iframe 设置 src 属性的方式启动 app 功能。取而代之，你需要定义 `intent:` 句式来启动 app。
@@ -25,12 +25,12 @@ Hybrid 架构中常见的几种 Launch App 的方式：
 intent:
 	HOST/URI-path		// Optional host
 	#Intent;
-		package=[string];
-		action=[string];
-		category=[string];
-		component=[string];
-		scheme=[string];
-		S.<extra>=[string];
+	package=[string];
+	action=[string];
+	category=[string];
+	component=[string];
+	scheme=[string];
+	S.<extra>=[string];
 	end;
 ```
 
