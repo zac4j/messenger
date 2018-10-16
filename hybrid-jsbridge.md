@@ -13,7 +13,7 @@ Hybrid 开发中比较常见框架如 Ionic 和 PhoneGap。这些框架允许开
 
 ### Calling Native in JavaScript
 JavaScript call native 主要有三种途径：
-+ Interface-based bridges: `[WebView.addJavascriptInterface(...)][aji]`
++ Interface-based bridges: `WebView.addJavascriptInterface(...)`
 + Event-based bridges: `WebChromeClient.onJsPrompt(...)`、`WebChromeClient.onJsConfirm(...)`
 + URL interposition-based bridges: `WebViewClient.shouldOverrideUrlLoading(...)`
 
@@ -126,6 +126,24 @@ public boolean shouldOverrideUrlLoading(WebView view, String url) {
 ```
 
 ### Calling JavaScript in Native
+WebView 中执行 JavaScript 的方式比较简单：
++ Android 4.4 前的方法：
+```java
+String js = "function getDeviceId(){}";
+
+mWebView.loadUrl(js);
+```
++ Android 4.4 后新增的方法：
+```java
+String js = "function getDeviceId(){}";
+
+mWebView.evaluateJavascript("javascript:" + js, new ValueCallback() {
+        @Override
+        public void onReceiveValue(String value) {
+          // do something with callback
+        }
+});
+```
 
 [aji]:https://developer.android.google.cn/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String)
 [bajb]:https://labs.mwrinfosecurity.com/blog/building-android-javajavascript-bridges/
