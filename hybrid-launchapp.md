@@ -8,7 +8,8 @@ categories:
 
 Hybrid 架构中常见的几种 Launch App 的方式：
 + Android intents with chrome
-+ Create deep links to app content
++ Deep linking & Android App Links
++ 应用宝 AppLinks 接入
 
 ### Android Intent with Chrome
 在 Chrome for Android ver.18 或更早之前，Android 系统允许网页通过 Android intent 启动 app。一种场景是网页内嵌入 iframe 并且 src 设定自定义的 URI-scheme:
@@ -74,5 +75,91 @@ intent:
 	- Intent URI 由输入的 URL 重定向而来。
 	- Intent URI 未经用户操作直接启动。
 
+### [Deep linking & Android App Links][applinks]
+
+#### Deep linking
+Deep links 是指允许用户直接访问 app 中特定内容的 URL。Android 开发中 ，我们可以通过配置 `intent-filters` 并从传入的 intent 中取出数据将用户带到相应的页面。
+
+**a.配置：**
++ AndroidManifest 页面配置 intent-filters:
+```xml
+<activity
+	android:name="com.zac4j.applinks.AppLinksActivity"
+	android:label="@string/app_name"
+	android:launchMode="singleTask">
+	<intent-filter android:label="@string/filter_view_zac4j">
+		<action android:name="android.intent.action.VIEW"/>
+		<category android:name="android.intent.category.DEFAULT"/>
+		<category android:name="android.intent.category.BROWSABLE"/>
+		<!-- Accepts URIs that begin with "zac4j://zaccc” -->
+		<data
+		    android:host="zaccc"
+		    android:scheme="zac4j"/>
+	</intent-filter>
+</activity>
+```
++ AppLinksActivity 页面取出 intent 数据：
+```java
+override fun onCreate(savedInstanceState: Bundle?) {
+  super.onCreate(savedInstanceState)
+  setContentView(R.layout.activity_main)
+
+  readIntentData()
+}
+
+/**
+ * Retrieve data from Intent
+ * sample scheme => zac4j://zaccc?actionId=jumpPage&pageId=10086
+ */
+private fun readIntentData() {
+  val link = intent.data.toString()
+  val uri = Uri.parse(link)
+  val actionId = uri.getQueryParameter("actionId")
+  val pageId = uri.getQueryParameter("pageId")
+
+  if (Action.JUMP_PAGE == actionId) {
+      PageNavigator.navigate(this, pageId)
+  }
+}
+```
+**b.缺点：**
++ 假如别的 App 在 `intent-filter` 配置了识别相同 scheme 的逻辑，当点击
+ `zac4j://zaccc` 时，不会直接跳到我们的 App，而是会弹出消歧弹框，让用户选择打开 App。
+
+#### AppLinks
+与 Deep linking 类似，AppLinks 同样需要配置 Handler Activity 的 intent-filter，不同之处是 AppLinks 配置的 URL 是 HTTP URL，此外这个链接还需要经过[安全验证][verify_applinks]。
+
+**a.配置：**
++ AndroidManifest 页面配置 intent-filters:
+```xml
+<activity
+	android:name="com.zac4j.applinks.AppLinksActivity"
+	android:label="@string/app_name"
+	android:launchMode="singleTask">
+	<intent-filter android:label="@string/filter_view_zac4j">
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+    <!-- Accepts URIs that begin with "http://www.zac4j.com/zaccc” -->
+    <data
+        android:host="www.zac4j.com"
+        android:pathPrefix="/zaccc"
+        android:scheme="http"/>
+    <data android:scheme="https"/>
+    <!-- note that the leading "/" is required for pathPrefix-->
+	</intent-filter>
+</activity>
+```
++ Handler Activity 同 Deep Linking 中的 AppLinksActivity。
++ 为 `www.zac4j.com` 这个域名配置 [Digital Asset Links][applinks_dal] 认证。
+
+#### Deep links 和 App links 的区别
+```
+
+```
+
 [intent_extra]:http://developer.android.com/guide/components/intents-filters.html#extras
 [category_browsable]:http://developer.android.com/reference/android/content/Intent.html#CATEGORY_BROWSABLE
+[applinks]:https://developer.android.google.cn/training/app-links/
+[verify_applinks]:https://developer.android.google.cn/training/app-links/verify-site-associations
+[applinks_dal]:https://developers.google.cn/digital-asset-links/v1/getting-started
