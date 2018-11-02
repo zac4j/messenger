@@ -154,9 +154,14 @@ private fun readIntentData() {
 + 为 `www.zac4j.com` 这个域名配置 [Digital Asset Links][applinks_dal] 认证。
 
 #### Deep links 和 App links 的区别
-```
-
-```
+|                   |                        Deep links                        |                                   App links                                   |
+|-------------------|:--------------------------------------------------------:|:-----------------------------------------------------------------------------:|
+| Intent URL scheme | http,https,or a custom scheme                            | 需要 http or https                                                            |
+| Intent action     | 任意 action                                              | 需要添加 android.intent.action.VIEW                                           |
+| Intent category   | 任意 category                                            | 需要添加 android.intent.category.BROWSABLE 和 android.intent.category.DEFAULT |
+| Link verification | 无                                                       | https 链接需要经过 Digital Asset Links 验证                                   |
+| User experience   | 可能会显示一个消歧对话框，供用户选择打开链接的应用程序。 | 无弹窗;直接打开链接对应的 app                                                 |
+| Compatibility     | 所有设备                                                 | Android 6.0 以上                                                              |
 
 [intent_extra]:http://developer.android.com/guide/components/intents-filters.html#extras
 [category_browsable]:http://developer.android.com/reference/android/content/Intent.html#CATEGORY_BROWSABLE
