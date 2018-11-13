@@ -59,23 +59,11 @@ There are two diff ways to think about them:
 How are team building and coaching different?
 Team building usually means going out, having lunch, doing group exercises, and in general socializing as a team so that the group gets more familiar with one another and can have a better internal set of relationships. Coaching is about identifying your team members' talent and helping them develop them.
 
-#### The process framework
-+ Once you know all the processes in your project fit together, it's easy to remember everything you need to know for the PMP exam.
-+ The **process groups** and **knowledge areas** is the key to all of this happening smoothly. 
 
-#### Project Integration Managemen
-+ The day-to-day work of a project manager
-+ The six Integration Management process
+#### Diff between project coordinator and project expediter
 
-#### Scope management
-+ Track your scope.
-+ As each goal is accomplised:
-	- confirm that all of the work has been done.
-	- make sure that the people who asked for it are satisfied with the result.
-+ Tooks that help your eam set its goals and keep everyday on track.
-+ Out of the frying pan (脱离苦海).
-+ The six Scope Management processes.
-+ Define the scope of the project.
-+ Create the work beakdown structure(WBS).
-+ Beak it down by project or phase.
-+ Decompose deliverables into work packages.
+| Role                | Report to          | Decision making      | Organization type          | Do what                       |
+|---------------------|--------------------|----------------------|----------------------------|-------------------------------|
+| project coordinator | higher up than fms | make minor decisions | weak matrix,functional org | keeps track of project status |
+| project expediter   | functional manager | no authority         | weak matrix,functional org | keeps track of project status |
+
