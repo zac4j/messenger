@@ -86,5 +86,16 @@ Team building usually means going out, having lunch, doing group exercises, and 
 | Role                | Report to          | Decision making      | Organization type          | Do what                       |
 |---------------------|--------------------|----------------------|----------------------------|-------------------------------|
 | project coordinator | higher up than fms | make minor decisions | weak matrix,functional org | keeps track of project status |
-| project expediter   | functional manager | no authority         | weak matrix,functional org | keeps track of project status |
+| project expediter   | functional manager | no authority         | weak matrix,functional org | keeps tra
+ ck of project status |
 
+#### Stackholder
+Anyone who will be affected by the outcome of your project is a **stackholder**.Type of stackholder:
++ Sponsor: who pay for the project.
++ Seller: help to deliver product or service.
++ Business partner: some company may provide yours training or other materials.
++ Consumers or users: customer use your product or service.
++ Organizational Groups: your company's sales team, internal support team or other teams.
++ Functional manager:functional manager provide the subject matter expertise to make things run smoothly on your project.
+
+#### Managing project constraints
