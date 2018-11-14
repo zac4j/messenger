@@ -59,6 +59,27 @@ There are two diff ways to think about them:
 How are team building and coaching different?
 Team building usually means going out, having lunch, doing group exercises, and in general socializing as a team so that the group gets more familiar with one another and can have a better internal set of relationships. Coaching is about identifying your team members' talent and helping them develop them.
 
+---
+
+## Organizations, constraints, and projects
+
+#### Project expediter
++ Kate's job is to document what's happening on a project, but she doesn't have the authority to make decisions on it. PMBOK calls this role a **project expediter**. She may **work on projects**, but she's certainly **not managing anything**. 
+
+#### Diff types of organizations
++ Kate works in a **functional origanization**:
+	- **project managers** don't have the authority to make major decisions on project.
+	- **functional managers** have the authority.
++ **Projectized organizations** give all the authority to the PM.
++ **Matrix organizations** share responsibility and authority between the two.
+
+| Type            |                                           Functional                                           | Weak Matrix                                                                                       | Balance Matrix                                                                                                                     | Strong Matrix                                                                                                                                                        | Projectized                                                                                                                      |
+|-----------------|:----------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Decision Making | Project management decisions need to be cleared with functional managers.                      | Major decisions still need to be made with the functional manager's cooperation or approval.      | PMs run their people-management decisions by the functional managers, but the functional runs his project decisions by the PM,too. | PMs have more authority than functional managers,but the team still reports to both managers.                                                                        | PM make all of the decisions about a project's budget,schedule,quality,and resources.                                            |
+| PM role         | PMs are assistants to the functional managers in getting the work done.                        | PMs have some authority, but they aren't in charge of the resources on a project.                 | PMs share authority with the functional managers.                                                                                  | The team might be judged base on performance on their projects,as well as on their functional expertise.In a strong matrix,delivery of the project is most important | Teams are organized around projects.When a project is done,the team is released,and the team members move on to another project. |
+| PM              | PM spend a lot of time doing administrative tasks and often only work as PMs part of the time. | Project expediters(like Kate) and project coordinators can work in weak matrix organizations,too. |                                                                                                                                    |                                                                                                                                                                      | The PM is responsible for the success or failure of the project.                                                                 |
+| PE              | You're likely to find project expediters in functional organizations.                          |                                                                                                   |                                                                                                                                    |                                                                                                                                                                      |                                                                                                                                  |
+
 
 #### Diff between project coordinator and project expediter
 
