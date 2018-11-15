@@ -99,3 +99,4 @@ Anyone who will be affected by the outcome of your project is a **stackholder**.
 + Functional manager:functional manager provide the subject matter expertise to make things run smoothly on your project.
 
 #### Managing project constraints
+
