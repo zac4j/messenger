@@ -95,3 +95,17 @@ A deep dive into the fragment lifecycle could be a lesson in itself. Here, we’
 **onDestroy**: Called when the Activity’s onDestroy is called.
 
 **onDetach**: Called when the association between the fragment and the activity is destroyed.
+
+- - - 
+
+## Lifecycle Cheat sheets
+
+What you’ve seen up to this point are the Activity Lifecycle and the Fragment Lifecycle for a single Activity or Fragment. For more complicated apps, it becomes important to understand the interactions between Activity and Fragment life cycles and multiple activities. This is outside of the scope of this lesson, but there are a series of excellent blog posts and cheat sheets posted by Googler which are helpful references for this:
+
+[The Android Lifecycle cheat sheet — part I: Single Activity][single-activity-lifecycle] - This is a visual recap of much of the material here.
+[The Android Lifecycle cheat sheet — part II: Multiple Activities][multiple-activity-lifecycle] - This shows the order of lifecycle calls when two activities interact.
+[The Android Lifecycle cheat sheet — part III: Fragments][fragment-lifecycle] - This show the order of lifecycle calls when an activity and fragment interact.
+
+[single-activity-lifecycle]:https://medium.com/androiddevelopers/the-android-lifecycle-cheat-sheet-part-i-single-activities-e49fd3d202ab
+[multiple-activity-lifecycle]:https://medium.com/androiddevelopers/the-android-lifecycle-cheat-sheet-part-ii-multiple-activities-a411fd139f24
+[fragment-lifecycle]:https://medium.com/androiddevelopers/the-android-lifecycle-cheat-sheet-part-iii-fragments-afc87d4f37fd
